@@ -33,12 +33,15 @@ export const signin = async (req, res, next) => {
     }
 
     const token = jwt.sign({ id: validUser._id, role: validUser.role }, process.env.JWT_SECRET);
-
+    
     if (validUser.role === 'admin') {
       res.cookie('admin_token', token, { httpOnly: true });
-    } else {
+    } else if (validUser.role === 'user') { // Added explicit condition for user role
       res.cookie('access_token', token, { httpOnly: true });
+    } else {
+      res.cookie('seller_token', token, { httpOnly: true });
     }
+    
 
     res.status(200).json({ success: true, user: validUser, token });
   } catch (err) {

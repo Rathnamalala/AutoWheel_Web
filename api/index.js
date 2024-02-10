@@ -3,12 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/userRoutes.js'; 
 import authRouter from './routes/authRoute.js';
-
 import cookieParser from 'cookie-parser';
-
-
-
-
 
 
 dotenv.config();
@@ -26,12 +21,16 @@ app.listen(3001, () => {
   console.log('Server is running on port 3001!!!');
 });
 
+//...........................................................................................................//
+//...........................................................................................................//
+
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 
 
 
-
+//......................................................................................................................//
+///.....................................................................................................................//
 
 
 
